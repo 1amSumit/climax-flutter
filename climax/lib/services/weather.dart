@@ -2,11 +2,11 @@ import "package:climax/services/location.dart";
 import "package:climax/services/networking.dart";
 
 const apiKey = "5c91a1d854fba97feeb075883795e755";
-const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 class WeatherModel {
   Future<dynamic> getCityWeather(String cityName) async {
-    var url = "$openWeatherURL?q=$cityName&appid=$apiKey&units=metric";
+    var url =
+        "https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric";
     Networking networking = Networking(url: url);
     return await networking.getData();
   }
@@ -16,7 +16,7 @@ class WeatherModel {
     await location.getCurrentLocation();
     Networking newtwork = Networking(
         url:
-            '$openWeatherURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
+            'https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
 
     return await newtwork.getData();
   }
